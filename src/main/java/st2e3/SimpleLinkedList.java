@@ -6,13 +6,14 @@ package st2e3;
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Achtung! Einige der Methoden sind fehlerhaft und müssen repariert werden.
  */
 public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collection<E> {
     private class Elem {
-        private E elem;
+        final private E elem;
         private Elem next;
 
         public Elem(E elem, Elem next) {
@@ -58,6 +59,9 @@ public class SimpleLinkedList<E> extends AbstractCollection<E> implements Collec
 
         @Override
         public E next() {
+            if (!this.hasNext()){
+                throw new NoSuchElementException();
+            }
             E content = current.elem;
             current = current.next;
             return content;
