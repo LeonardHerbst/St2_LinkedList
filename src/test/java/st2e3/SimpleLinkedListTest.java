@@ -5,7 +5,7 @@ package st2e3;/*
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
+import java.util.Iterator;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -31,7 +31,9 @@ public class SimpleLinkedListTest {
         String s2 = " Test!";
         testList.add(s1);
         testList.add(s2);
-        assertThat(testList.containsAll(Arrays.asList(s1, s2))).isTrue();
+        Iterator<String> iter = testList.iterator();
+        assertThat(iter.next()).isEqualTo(s1);
+        assertThat(iter.next()).isEqualTo(s2);
     }
 
     @Test
